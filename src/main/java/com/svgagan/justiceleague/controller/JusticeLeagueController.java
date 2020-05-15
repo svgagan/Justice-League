@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/justiceLeague")
+@RequestMapping("/api/v1/justiceLeague")
 @Log4j2
 public class JusticeLeagueController {
 
