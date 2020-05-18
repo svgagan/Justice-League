@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  justiceLeaguedb:
+    image: postgres:latest
+    environment:
+      POSTRGRES_DB: comicsdb
+      POSTGRES_PASSWORD: postgres
+      SCHEMA: public
+    volumes:
+      - ./src/main/resources/sql/comicsdb.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - type: bind
+        source: ./postgres-data
+        target: /var/lib/postgresql/data
+    restart: always
+
+  justiceLeagueApi:
+    depends_on:
+      - justiceLeaguedb
+    image: justice-league:latest
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://justiceLeaguedb:5432/comicsdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8081:8080"
+    restart: always
