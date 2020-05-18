@@ -1,11 +1,18 @@
 # Detective Comics API
 
-### Run using Docker-Compose 
-Run following commands inside project root directory
+## Run using Docker-Compose 
+
+Step-1: Create the jar file.
 ```
-docker build -t justice-league .
-docker-compose up -d
+./gradlew clean build
 ```
 
-#### Swagger
+Step-2: Build docker images and run using docker-compose.
+```
+Build Image:        docker build -t justice-league .
+Run Containers:     docker-compose up -d
+Stop Containers:    docker-compose down
+```
+
+## Swagger
 http://localhost:8081/detective-comics/swagger-ui.html
