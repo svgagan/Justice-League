@@ -11,4 +11,6 @@ public interface JusticeLeagueRepository extends JpaRepository<SuperHeroes, Stri
 
     public Optional<SuperHeroes> findBySuperHeroName(String superHeroName);
 
+    public Optional<SuperHeroes> findById(String superHeroId);
+
 }

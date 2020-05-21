@@ -25,35 +25,35 @@ public class JusticeLeagueController {
 
     @GetMapping
     public ResponseEntity<List<SuperHeroes>> fetchAllJusticeLeagueHeroes() throws Exception {
-        log.info("Returning all Justice League Heroes");
+        log.info("Returning all Super-Heroes");
         List<SuperHeroes> retrievedSuperHeroes = this.justiceLeagueService.findAllSuperHero();
         return new ResponseEntity<>(retrievedSuperHeroes, HttpStatus.OK);
     }
 
-    @GetMapping(path = "{superHeroId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "{superHeroId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SuperHeroes> fetchJusticeLeagueHero(@PathVariable String superHeroId) throws Exception {
-        log.info("Returning a Justice League Hero");
+        log.info("Returning a Super-Hero");
         SuperHeroes retrievedSuperHero = this.justiceLeagueService.findSuperHero(superHeroId);
         return new ResponseEntity<>(retrievedSuperHero, HttpStatus.OK);
     }
 
     @PostMapping (produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SuperHeroes> saveJusticeLeagueHero(@RequestBody SuperHeroes superHeroes) throws Exception {
-        log.info("Creating a Justice League Hero");
+        log.info("Creating a Super-Hero");
         SuperHeroes retrievedSuperHero = this.justiceLeagueService.createSuperHero(superHeroes);
         return new ResponseEntity<>(retrievedSuperHero, HttpStatus.CREATED);
     }
 
     @PutMapping(path = "{superHeroId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SuperHeroes> updateJusticeLeagueHero(@PathVariable String superHeroId, @RequestBody SuperHeroes superHeroes) throws Exception {
-        log.info("Updating a Justice League Hero");
+        log.info("Updating a Super-Hero");
         SuperHeroes retrievedSuperHero = this.justiceLeagueService.updateSuperHero(superHeroId, superHeroes);
         return new ResponseEntity<>(retrievedSuperHero, HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping(path = "{superHeroId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(path = "{superHeroId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteJusticeLeagueHero(@PathVariable String superHeroId) throws Exception {
-        log.info("Deleting a Justice League Hero");
+        log.info("Deleting a Super-Hero");
         this.justiceLeagueService.deleteSuperHero(superHeroId);
     }
 }
