@@ -4,6 +4,7 @@ import com.svgagan.justiceleague.model.ComicDetails;
 import com.svgagan.justiceleague.repository.ComicsDetailsRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,8 @@ public class ComicDetailsService {
         if(existing.isPresent()){
             throw new Exception("Comic Exists");
         }
+        comicDetails.setCreatedDate(new Date());
+        comicDetails.setUpdatedDate(new Date());
         return this.comicsDetailsRepository.save(comicDetails);
     }
 
@@ -50,6 +53,8 @@ public class ComicDetailsService {
             throw new Exception("Comic Not Found");
         }
         comicDetails.setId(comicId);
+        comicDetails.setCreatedDate(existing.get().getCreatedDate());
+        comicDetails.setUpdatedDate(new Date());
         return this.comicsDetailsRepository.save(comicDetails);
     }
 }

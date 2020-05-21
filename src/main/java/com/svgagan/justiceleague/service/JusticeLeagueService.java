@@ -5,6 +5,7 @@ import com.svgagan.justiceleague.model.SuperHeroes;
 import com.svgagan.justiceleague.repository.JusticeLeagueRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +42,8 @@ public class JusticeLeagueService {
         if(existingComic.getStatus().equals(Boolean.FALSE)) {
             throw new Exception("Comic is Disabled, SuperHero creation failed");
         }
-
+        superHeroes.setCreatedDate(new Date());
+        superHeroes.setUpdatedDate(new Date());
         return this.justiceLeagueRepository.save(superHeroes);
     }
 
@@ -51,6 +53,8 @@ public class JusticeLeagueService {
             throw new Exception("SuperHero Not Found");
         }
         superHeroes.setId(superHeroId);
+        superHeroes.setCreatedDate(existing.get().getCreatedDate());
+        superHeroes.setUpdatedDate(new Date());
         return this.justiceLeagueRepository.save(superHeroes);
     }
 

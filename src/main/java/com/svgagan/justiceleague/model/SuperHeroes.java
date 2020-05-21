@@ -10,7 +10,6 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Entity
 @EntityListeners({AuditingEntityListener.class})
@@ -36,4 +35,11 @@ public class SuperHeroes implements Serializable {
     @Column(name = "comic_details_id")
     private String comicDetailsId;
 
+    public SuperHeroes(String id, String superHeroName, Boolean status, Date createdDate, Date updatedDate, String comicDetailsId) {
+        this.id = id;
+        this.comicDetailsId = comicDetailsId;
+        this.superHeroName = superHeroName;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+    }
 }

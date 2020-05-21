@@ -9,7 +9,6 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Entity
 @EntityListeners({AuditingEntityListener.class})
@@ -31,4 +30,12 @@ public class ComicDetails {
 
     @Column(name = "updated_date")
     private Date updatedDate;
+
+    public ComicDetails(String id, String comicName, Boolean status, Date createdDate, Date updatedDate){
+        this.id = id;
+        this.comicName = comicName;
+        this.status = status;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+    }
 }
